@@ -5,7 +5,7 @@
 void setup() {
   Wire.begin(); // Master
   Serial.begin(115200);
-  Serial.println("Ready: W:<slave>:<reg>:<value> or R:<slave>:<reg>:<num_bytes>");
+  Serial.println("Ready: W:<slave>:<reg>:<value> or R:<slave>:<reg>:<num_bytes> or S:");
 }
 
 void loop() {
@@ -84,8 +84,31 @@ void loop() {
       }
     }
 
+    else if (input.startsWith("S:")) {
+      Serial.println("Scanning I2C bus...");
+      byte count = 0;
+      for (byte address = 1; address < 127; address++) {
+        Wire.beginTransmission(address);
+        byte error = Wire.endTransmission();
+        if (error == 0) {
+          Serial.print("I2C device found at address 0x");
+          if (address < 16) Serial.print("0");
+          Serial.print(address, HEX);
+          Serial.println();
+          count++;
+        }
+      }
+      if (count == 0) {
+        Serial.println("No I2C devices found.");
+      } else {
+        Serial.print("Scan complete. Found ");
+        Serial.print(count);
+        Serial.println(" device(s).");
+      }
+    }
+
     else {
-      Serial.println("Unknown command. Use W:<s>:<r>:<v> or R:<s>:<r>:<n>");
+      Serial.println("Unknown command. Use W:<s>:<r>:<v> or R:<s>:<r>:<n> or S:");
     }
   }
 }
