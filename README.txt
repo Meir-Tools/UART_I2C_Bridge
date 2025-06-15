@@ -1,3 +1,5 @@
+```
+
 W:<slave_addr>:<reg_addr>:<data>
 R:<slave_addr>:<reg_addr>:<num_bytes>
 - max 32 registers
@@ -18,3 +20,5 @@ GY-87 10DOF Module MPU6050 HMC5883L BMP180
 - solution , W:0x68:0x37:0x02
 
 # GY-87 10DOF Module MPU6050 HMC5883L BMP180
+
+```
