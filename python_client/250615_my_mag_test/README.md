@@ -1,4 +1,7 @@
 ```
+python
+```
+```
 
 import serial
 import time
