@@ -16,3 +16,5 @@ R:0x68:0x00:30
 GY-87 10DOF Module MPU6050 HMC5883L BMP180
 - problem , HMC5883L address not show on i2c bus
 - solution , W:0x68:0x37:0x02
+
+# GY-87 10DOF Module MPU6050 HMC5883L BMP180
