@@ -36,9 +36,11 @@ response = ser.readline()
 command = "W:0x0D:0x0B:0x01\n"  
 ser.write(command.encode('utf-8'))
 response = ser.readline()
+print("Response as bytes:", response)
 command = "W:0x0D:0x09:0x1D"  
 ser.write(command.encode('utf-8'))
 response = ser.readline()
+print("Response as bytes:", response)
 
 ser.close()
 
